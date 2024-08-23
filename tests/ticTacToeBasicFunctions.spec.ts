@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import * as ticTacToeApp from '../fixtures/ticTacToeVercelApp.json'
+import * as ticTacToeApp from '../fixtures/ticTacToeVercelApp.json';
 
 test.describe('Tic Tac Toe Vercel App - Basic Functions', async ()=>{
 
@@ -7,7 +7,7 @@ test.describe('Tic Tac Toe Vercel App - Basic Functions', async ()=>{
 
     // Making sure our landing page was loaded successfully
     await page.goto(ticTacToeApp.gameUrl);
-    await expect(page).toHaveURL(ticTacToeApp.gameUrl)
+    await expect(page).toHaveURL(ticTacToeApp.gameUrl);
 
   })
 
@@ -15,38 +15,38 @@ test.describe('Tic Tac Toe Vercel App - Basic Functions', async ()=>{
 
     // Clicking "Leaderboard" and making sure we're redirected
     await page.getByText('Leaderboard').click();
-    await expect(page).toHaveURL(ticTacToeApp.leaderboardUrl)
+    await expect(page).toHaveURL(ticTacToeApp.leaderboardUrl);
 
-  });
+  })
 
   test('Clicking "About" and asserting redirection', async ({ page }) => {
     
     // Clicking "About" and making sure we're redirected
     await page.getByText('About').click();
-    await expect(page).toHaveURL(ticTacToeApp.aboutUrl)
+    await expect(page).toHaveURL(ticTacToeApp.aboutUrl);
 
-  });
+  })
 
   test('Clicking "About" and asserting redirection, then clicking "Play" and asserting redirection', async ({ page }) => {
     
     // Clicking "About" to leave home page
     await page.getByText('About').click();
-    await expect(page).toHaveURL(ticTacToeApp.aboutUrl)
+    await expect(page).toHaveURL(ticTacToeApp.aboutUrl);
 
     // Clicking "Play" and making sure we're redirected
     await page.locator('nav .jsx-2a2e5baca28c3daa').getByText('Play').click();
-    await expect(page).toHaveURL(ticTacToeApp.gameUrl)
+    await expect(page).toHaveURL(ticTacToeApp.gameUrl);
 
-  });
+  })
 
   test('Playing a game and checking result', async ({ page }) => {
     // Storing order of buttons that would make X win the game
-    const orderOfButtons = ['#cell-0','#cell-3','#cell-1','#cell-4','#cell-2']
+    const orderOfButtons = ['#cell-0','#cell-3','#cell-1','#cell-4','#cell-2'];
     
     // Loop through buttons to simulate X winning the game
     for(const button of orderOfButtons){
 
-      const buttonLocator =  page.locator(button)
+      const buttonLocator =  page.locator(button);
 
       await buttonLocator.click();
       const text = await buttonLocator.textContent();
@@ -56,12 +56,12 @@ test.describe('Tic Tac Toe Vercel App - Basic Functions', async ()=>{
 
     await expect(page.getByText('Winner: X')).toBeVisible();
 
-  });
+  })
 
   test('Clicking buttons and checking if "Restart" button works as expected', async ({ page }) => {
 
     // Storing the location of all rows to parse through
-    const rowsOfButtons = await page.locator('.board-row').all()
+    const rowsOfButtons = await page.locator('.board-row').all();
     
     // Clicking one cell to initialize the game
     await page.locator('#cell-0').click();
@@ -121,4 +121,4 @@ test('Extra Exercise (Challenge)', async ({page}) => {
      expect(currentFirstLetter < nextFirstLetter).toBe(true);
    }
  }
-});
+})
