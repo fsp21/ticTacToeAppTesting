@@ -13,7 +13,7 @@ Before running the tests, ensure you have the following installed:
  - run "npm init playwright@latest" and follow the instructions
 
 With all dependencies installed:
- - run command "git clone https://github.com/fsp21/playwrightWithTypescript.git"
+ - run command "git clone https://github.com/fsp21/ticTacToeAppTesting.git"
  - navigate to the directory
  - ensure all dependencies are installed by running command "npm install"
  - run "npx playwright test" command to run all the tests
